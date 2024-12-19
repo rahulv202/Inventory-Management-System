@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Core\Model;
 
-class Supplier extends Model
+class Suppliers extends Model
 {
     protected $table = 'suppliers';
     private static $instance_obj;
