@@ -34,7 +34,7 @@ $router->post('/update-product', 'ProductController@updateProduct', [CheckLogout
 $router->get('/delete-product/{param}', 'ProductController@deleteProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->get('/manage-suppliers', 'SupplierController@manageSuppliers', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->get('/edit-supplier/{param}', 'SupplierController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->post('/edit-supplier', 'SupplierController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->post('/update-supplier', 'SupplierController@updateSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->get('/delete-supplier/{param}', 'SupplierController@deleteSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 
 
