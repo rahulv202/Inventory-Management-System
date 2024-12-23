@@ -19,6 +19,11 @@
 
 
     <?php } ?>
+    <?php if ($user['role'] === 'manager') { ?>
+        <a href="/manage-inventory" class="btn btn-primary">Manage Inventory</a>
+        <!-- <a href="/manage-suppliers" class="btn btn-primary">Manage Suppliers</a> -->
+        <a href="/manage-orders" class="btn btn-primary">Manage Orders</a>
+    <?php } ?>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <a href="/logout" class="btn btn-danger">Logout</a>

@@ -10,7 +10,7 @@ use App\Core\Route;
 use App\Middleware\checkAdminRoleMiddleware;
 use App\Middleware\CheckLoginMiddleware;
 use App\Middleware\CheckLogoutMiddleware;
-
+use App\Middleware\CheckManagerRoleMiddleware;
 
 $router = new Route();
 // Define your routes here
@@ -37,10 +37,14 @@ $router->get('/edit-supplier/{param}', 'SupplierController@editSupplier', [Check
 $router->post('/update-supplier', 'SupplierController@updateSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->get('/delete-supplier/{param}', 'SupplierController@deleteSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 
-
-
-
-
+// Manager routes
+$router->get('/manage-inventory', 'InventoryController@manageInventory', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->get('/order-product/{param}', 'OrderController@orderProduct', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->post('/order-product', 'OrderController@createOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->get('/manage-orders', 'OrderController@manageOrders', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->get('/edit-order/{param}', 'OrderController@editOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->post('/edit-order', 'OrderController@updateOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+$router->get('/delete-order/{param}', 'OrderController@deleteOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
 try {
     // Resolve the route
     $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
