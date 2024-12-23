@@ -107,4 +107,15 @@ class OrderController extends Controller
         }
         $this->view('orders/list', ['orders' => $orders]);
     }
+
+    public function fulfilledOrder($id)
+    {
+        $order_model = Orders::getInstance();
+        if ($order_model->update(['status' => 'fulfilled'], $id)) {
+            $this->redirect('/manage-supplier-products-order');
+        } else {
+            $error = "Failed to fulfill order.";
+            $this->view('suppliers/order', ['error' => $error]);
+        }
+    }
 }

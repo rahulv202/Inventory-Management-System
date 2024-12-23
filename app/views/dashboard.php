@@ -28,6 +28,9 @@
         <a href="/manage-inventory-list" class="btn btn-primary">Manage Inventory</a>
         <a href="/add-inventory" class="btn btn-primary">Add Inventory</a>
     <?php } ?>
+    <?php if ($user['role'] === 'supplier') { ?>
+        <a href="/manage-supplier-products-order" class="btn btn-primary">Manage Order</a>
+    <?php } ?>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <a href="/logout" class="btn btn-danger">Logout</a>

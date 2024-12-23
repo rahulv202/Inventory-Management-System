@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Models\Suppliers;
+use App\Models\Products;
+use App\Models\Orders;
 
 class SupplierController extends Controller
 {
@@ -57,5 +59,15 @@ class SupplierController extends Controller
             $error = "Failed to delete supplier.";
             $this->view('suppliers/list', ['error' => $error]);
         }
+    }
+
+    public function manageSupplierProductsOrder()
+    {
+        $product_model = Products::getInstance();
+        $products = $product_model->getAllData("supplier_id = " . $_SESSION['user_id']);
+        $order_model = Orders::getInstance();
+        $data = $order_model->getAllData("status='pending'");
+
+        $this->view('suppliers/order', ['data' => $data, 'products' => $products]);
     }
 }

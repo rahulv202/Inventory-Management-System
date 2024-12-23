@@ -12,6 +12,7 @@ use App\Middleware\CheckLoginMiddleware;
 use App\Middleware\CheckLogoutMiddleware;
 use App\Middleware\CheckManagerRoleMiddleware;
 use App\Middleware\CheckStaffRoleMiddleware;
+use App\Middleware\CheckSupplierRoleMiddleware;
 
 $router = new Route();
 // Define your routes here
@@ -54,6 +55,10 @@ $router->post('/add-inventory', 'InventoryController@createInventory', [CheckLog
 $router->get('/update-product-inventory/{param}', 'InventoryController@editInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
 $router->post('/update-inventory', 'InventoryController@updateInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
 $router->get('/delete-product-inventory/{param}', 'InventoryController@deleteInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+
+// Supplier routes
+$router->get('/manage-supplier-products-order', 'SupplierController@manageSupplierProductsOrder', [CheckLogoutMiddleware::class, CheckSupplierRoleMiddleware::class]);
+$router->get('/fulfilled-order/{param}', 'OrderController@fulfilledOrder', [CheckLogoutMiddleware::class, CheckSupplierRoleMiddleware::class]);
 try {
     // Resolve the route
     $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
