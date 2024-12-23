@@ -26,16 +26,16 @@ $router->get('/manage-users', 'UserController@manageUsers', [CheckLogoutMiddlewa
 $router->get('/edit-user/{param}', 'UserController@editUser', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->post('/edit-user', 'UserController@updateUser', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 $router->get('/delete-user/{param}', 'UserController@deleteUser', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/manage-products', 'UserController@manageProducts', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/add-product', 'UserController@addProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->post('/add-product', 'UserController@createProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/edit-product/{param}', 'UserController@editProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->post('/update-product', 'UserController@updateProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/delete-product/{param}', 'UserController@deleteProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/manage-suppliers', 'AdminController@manageSuppliers', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/edit-supplier', 'AdminController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->post('/edit-supplier', 'AdminController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
-$router->get('/delete-supplier/{param}', 'AdminController@deleteSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/manage-products', 'ProductController@manageProducts', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/add-product', 'ProductController@addProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->post('/add-product', 'ProductController@createProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/edit-product/{param}', 'ProductController@editProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->post('/update-product', 'ProductController@updateProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/delete-product/{param}', 'ProductController@deleteProduct', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/manage-suppliers', 'SupplierController@manageSuppliers', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/edit-supplier/{param}', 'SupplierController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->post('/edit-supplier', 'SupplierController@editSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
+$router->get('/delete-supplier/{param}', 'SupplierController@deleteSupplier', [CheckLogoutMiddleware::class, checkAdminRoleMiddleware::class]);
 
 
 
