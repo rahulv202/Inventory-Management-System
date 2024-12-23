@@ -24,6 +24,10 @@
         <!-- <a href="/manage-suppliers" class="btn btn-primary">Manage Suppliers</a> -->
         <a href="/manage-orders" class="btn btn-primary">Manage Orders</a>
     <?php } ?>
+    <?php if ($user['role'] === 'staff') { ?>
+        <a href="/manage-inventory-list" class="btn btn-primary">Manage Inventory</a>
+        <a href="/add-inventory" class="btn btn-primary">Add Inventory</a>
+    <?php } ?>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <a href="/logout" class="btn btn-danger">Logout</a>

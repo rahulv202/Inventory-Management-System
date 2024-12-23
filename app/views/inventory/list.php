@@ -25,7 +25,13 @@
                     <td><?php echo $value['quantity']; ?></td>
                     <td><?php echo $value['price']; ?></td>
                     <td>
-                        <a href="/order-product/<?php echo $value['id']; ?>" class="btn btn-sm btn-primary">Order</a>
+                        <?php if ($_SESSION['user_role'] == 'staff') { ?>
+                            <a href="/update-product-inventory/<?php echo $value['id']; ?>" class="btn btn-sm btn-primary">Update Inventory</a>
+                            <a href="/delete-product-inventory/<?php echo $value['id']; ?>" class="btn btn-sm btn-danger">Delete Inventory</a>
+                        <?php } ?>
+                        <?php if ($_SESSION['user_role'] == 'manager') { ?>
+                            <a href="/order-product/<?php echo $value['id']; ?>" class="btn btn-sm btn-primary">Order</a>
+                        <?php } ?>
                     </td>
                 </tr>
             <?php } ?>

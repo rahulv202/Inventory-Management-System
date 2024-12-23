@@ -11,6 +11,7 @@ use App\Middleware\checkAdminRoleMiddleware;
 use App\Middleware\CheckLoginMiddleware;
 use App\Middleware\CheckLogoutMiddleware;
 use App\Middleware\CheckManagerRoleMiddleware;
+use App\Middleware\CheckStaffRoleMiddleware;
 
 $router = new Route();
 // Define your routes here
@@ -45,6 +46,14 @@ $router->get('/manage-orders', 'OrderController@manageOrders', [CheckLogoutMiddl
 $router->get('/edit-order/{param}', 'OrderController@editOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
 $router->post('/edit-order', 'OrderController@updateOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
 $router->get('/delete-order/{param}', 'OrderController@deleteOrder', [CheckLogoutMiddleware::class, CheckManagerRoleMiddleware::class]);
+
+// Staff routes
+$router->get('/manage-inventory-list', 'InventoryController@manageInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+$router->get('/add-inventory', 'InventoryController@addInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+$router->post('/add-inventory', 'InventoryController@createInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+$router->get('/update-product-inventory/{param}', 'InventoryController@editInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+$router->post('/update-inventory', 'InventoryController@updateInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
+$router->get('/delete-product-inventory/{param}', 'InventoryController@deleteInventory', [CheckLogoutMiddleware::class, CheckStaffRoleMiddleware::class]);
 try {
     // Resolve the route
     $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
